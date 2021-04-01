@@ -1,0 +1,10 @@
+{
+  "id": 60957,
+  "entity_id": "3HQ2RW8TE7P3",
+  "trace_id": "526562",
+  "user": "Integration-Test",
+  "created_at": "2021-04-01T15:34:22Z",
+  "log": "{ \"name\": \"Test Entity\", \"budget\": 656221.30, \"meta\": { \"year\": 2021, \"roles\": [\"A\", \"B\", \"C\"] }, \"ownerId\": \"Entity Owner\", \"endDate\": \"1617528496000\", \"createdBy\": \"Test Actor\" }",
+  "status": "DRAFT",
+  "__op": "c"
+}

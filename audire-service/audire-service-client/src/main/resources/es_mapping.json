@@ -1,0 +1,66 @@
+{
+  "properties": {
+    "_auditId": {
+      "type": "keyword"
+    },
+    "_auditPrevId": {
+      "type": "keyword"
+    },
+    "_eventTraceId": {
+      "type": "keyword"
+    },
+    "_eventType": {
+      "type": "keyword",
+      "ignore_above": 2
+    },
+    "actor": {
+      "type": "keyword"
+    },
+    "changedAt": {
+      "type": "date"
+    },
+    "changes": {
+      "type": "nested",
+      "properties": {
+        "_after": {
+          "type": "text"
+        },
+        "_before": {
+          "type": "text"
+        },
+        "_changedField": {
+          "type": "keyword"
+        },
+        "_operation": {
+          "type": "keyword"
+        }
+      }
+    },
+    "entityId": {
+      "type": "keyword"
+    },
+    "entityType": {
+      "type": "keyword"
+    },
+    "extras": {
+      "type": "nested",
+      "properties": {
+        "key": {
+          "type": "keyword"
+        },
+        "val": {
+          "type": "keyword"
+        }
+      }
+    },
+    "ownerId": {
+      "type": "keyword"
+    },
+    "systemic": {
+      "type": "boolean"
+    },
+    "version": {
+      "type": "long"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "systemic": false,
+  "_auditPrevId": "P1",
+  "_eventTraceId": "ET1",
+  "entityType": "CAMPAIGN_AUDIT",
+  "changes": [
+    {
+      "_changedField": "status",
+      "_operation": "replace",
+      "_before": "DRAFT",
+      "_after": "SERVICEABLE"
+    }
+  ],
+  "extras": [
+    {
+      "key": "K",
+      "val": true
+    }
+  ],
+  "entityId": "E",
+  "ownerId": "O1",
+  "version": 12,
+  "actor": "actor",
+  "_auditId": "I1",
+  "_eventType": "c",
+  "changedAt": "2020-12-27T11:59:20Z"
+}

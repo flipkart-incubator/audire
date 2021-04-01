@@ -1,0 +1,34 @@
+{
+  "total": 4641,
+  "pageCount": 1,
+  "hasNextPage": true,
+  "audits": [
+    {
+      "first": false,
+      "systemic": false,
+      "entityId": "E1",
+      "entityType": "BANNER_GROUP_AUDIT",
+      "eventTraceId": "ET",
+      "auditId": "I1",
+      "auditPrevId": "IP1",
+      "version": 1609070360000,
+      "changes": [
+        {
+          "operation": "replace",
+          "field": "F1",
+          "before": true,
+          "after": "N2"
+        }
+      ],
+      "meta": [
+        {
+          "key": "K1",
+          "val": 2
+        }
+      ],
+      "changedAt": "2020-12-27T11:59:20Z",
+      "actor": "actor",
+      "ownerId": "1019"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 7400
+  adminConnectors:
+    - type: http
+      port: 7401
+  requestLog:
+    appenders:
+      - type: file
+        timeZone: IST
+        queueSize: 512
+        currentLogFilename: log/access.log
+        archivedLogFilenamePattern: log/access-%i.log
+        archivedFileCount: 1
+        maxFileSize: 10MB
+      - type: console
+
+logging:
+  level: DEBUG
+  loggers:
+    org.eclipse.jetty: INFO
+    org.apache.http: DEBUG
+
+  appenders:
+    - type: file
+      timeZone: IST
+      currentLogFilename: log/app.log
+      archivedLogFilenamePattern: log/app-%i.log
+      archivedFileCount: 1
+      logFormat: "%-5level [%date] %logger: %msg%n%rEx{}%n"
+      maxFileSize: 10MB
+    - type: console
+
+esClientConfig:
+  host: localhost
+  port: 9202
+  scheme: http
+  index: audit_trail_local
+  type: all
+  queryTimeout: 1s
