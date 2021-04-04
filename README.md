@@ -3,9 +3,6 @@
 A generic audit framework that defines Audit Ingestion pipelines, and an Audit Service that exposes the enriched audits
 adhering to a generic schema for rich querying.
 
-[comment]: <> (todo this)
-![image](https://github.fkinternal.com/storage/user/3406/files/e1ae8d80-4a34-11eb-9fe6-136a0767d63d)
-
 ### Usage
 
 - Clone the project.
