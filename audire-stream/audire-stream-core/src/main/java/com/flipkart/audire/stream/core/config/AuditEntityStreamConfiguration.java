@@ -1,6 +1,5 @@
 package com.flipkart.audire.stream.core.config;
 
-import com.flipkart.audire.stream.model.EntityType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -57,7 +56,7 @@ public class AuditEntityStreamConfiguration {
          * the contracts.
          */
         @NotNull
-        private EntityType entityType;
+        private String entityType;
 
         /**
          * Provide a unique id that represents this audit entry uniquely. This could be a primary

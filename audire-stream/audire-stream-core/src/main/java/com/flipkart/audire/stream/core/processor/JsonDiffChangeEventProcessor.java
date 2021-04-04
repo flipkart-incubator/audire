@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.flipkart.audire.stream.core.config.AuditEntityStreamConfiguration;
 import com.flipkart.audire.stream.model.AuditStreamEntityChangeEvent;
 import com.flipkart.audire.stream.model.ChangelogRecord;
-import com.flipkart.audire.stream.model.EntityType;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.SetUtils;
@@ -41,7 +40,7 @@ public class JsonDiffChangeEventProcessor implements AuditEntityStreamChangeEven
         try {
             if (changeEvent != null) {
                 log.info("Receiving enriched change event {}", changeEvent);
-                EntityType entityType = config.getFieldConfig().getEntityType();
+                String entityType = config.getFieldConfig().getEntityType();
                 JsonNode beforeNode = changeEvent.getBeforeNode();
                 JsonNode afterNode = changeEvent.getAfterNode();
 
@@ -72,12 +71,12 @@ public class JsonDiffChangeEventProcessor implements AuditEntityStreamChangeEven
             return null;
 
         } catch (Exception ex) {
-            log.error("Error processing campaign change event {}", changeEvent, ex);
+            log.error("Error processing {} change event", changeEvent, ex);
             throw new AuditEntityStreamChangeEventProcessorException("Error while processing change event. ", ex);
         }
     }
 
-    private List<ChangelogRecord.Changelog> processExistingRecord(EntityType entityType, JsonNode payloadDiffNodes) {
+    private List<ChangelogRecord.Changelog> processExistingRecord(String entityType, JsonNode payloadDiffNodes) {
         Map<String, ArrayNode> groupedAddFieldNodes = new HashMap<>();
         Map<String, ArrayNode> groupedRemoveFieldNodes = new HashMap<>();
         List<ChangelogRecord.Changelog> records = new ArrayList<>();

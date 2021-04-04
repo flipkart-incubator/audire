@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static com.flipkart.audire.stream.model.EntityType.BANNER_GROUP_AUDIT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
@@ -21,7 +20,7 @@ class AuditLogFetchAPIResponseTest {
         assertFalse(audit.isFirst());
         assertFalse(audit.isSystemic());
         assertEquals("E1", audit.getEntityId());
-        assertEquals(BANNER_GROUP_AUDIT, audit.getEntityType());
+        assertEquals("DUMMY_AUDIT", audit.getEntityType());
         assertEquals("ET", audit.getEventTraceId());
 
         assertEquals("I1", audit.getAuditId());

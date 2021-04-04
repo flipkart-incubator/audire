@@ -1,6 +1,5 @@
 package com.flipkart.audire.stream.core.enricher;
 
-import com.flipkart.audire.stream.model.EntityType;
 import lombok.AllArgsConstructor;
 import org.apache.commons.collections4.MapUtils;
 
@@ -9,9 +8,9 @@ import java.util.Map;
 @AllArgsConstructor
 public class AuditEntityStreamChangeEventEnricherFactory {
 
-    private final Map<EntityType, AuditEntityStreamChangeEventEnricher> transformerMap;
+    private final Map<String, AuditEntityStreamChangeEventEnricher> transformerMap;
 
-    public AuditEntityStreamChangeEventEnricher get(EntityType entityType) {
+    public AuditEntityStreamChangeEventEnricher get(String entityType) {
         if (MapUtils.isNotEmpty(transformerMap) && transformerMap.containsKey(entityType)) {
             return transformerMap.get(entityType);
         }

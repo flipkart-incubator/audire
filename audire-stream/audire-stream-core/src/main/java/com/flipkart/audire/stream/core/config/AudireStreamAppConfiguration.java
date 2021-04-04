@@ -1,6 +1,5 @@
 package com.flipkart.audire.stream.core.config;
 
-import com.flipkart.audire.stream.model.EntityType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,7 +18,7 @@ public class AudireStreamAppConfiguration {
 
     @Valid
     @NotEmpty
-    private Map<EntityType, AuditEntityStreamConfiguration> auditStreamEntityConfig;
+    private Map<String, AuditEntityStreamConfiguration> auditStreamEntityConfig;
 
     @Valid
     @NotNull

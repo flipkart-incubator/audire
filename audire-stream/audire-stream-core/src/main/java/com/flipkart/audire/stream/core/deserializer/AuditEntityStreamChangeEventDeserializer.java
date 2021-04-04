@@ -8,7 +8,6 @@ import com.flipkart.audire.stream.commons.JsonNodeUtils;
 import com.flipkart.audire.stream.core.config.AuditEntityStreamConfiguration;
 import com.flipkart.audire.stream.core.config.AuditEntityStreamConfigurationFactory;
 import com.flipkart.audire.stream.model.AuditStreamEntityChangeEvent;
-import com.flipkart.audire.stream.model.EntityType;
 import com.flipkart.audire.stream.model.EventType;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +26,7 @@ public abstract class AuditEntityStreamChangeEventDeserializer {
 
     private final AuditEntityStreamConfiguration.FieldConfiguration fieldConfig;
 
-    protected AuditEntityStreamChangeEventDeserializer(EntityType entityType, AuditEntityStreamConfigurationFactory factory) {
+    protected AuditEntityStreamChangeEventDeserializer(String entityType, AuditEntityStreamConfigurationFactory factory) {
         this.fieldConfig = factory.get(entityType).getFieldConfig();
     }
 

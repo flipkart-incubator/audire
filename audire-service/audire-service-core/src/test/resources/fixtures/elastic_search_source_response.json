@@ -2,7 +2,7 @@
   "systemic": false,
   "_auditPrevId": "P1",
   "_eventTraceId": "ET1",
-  "entityType": "CAMPAIGN_AUDIT",
+  "entityType": "DUMMY_ENTITY_AUDIT",
   "changes": [
     {
       "_changedField": "status",

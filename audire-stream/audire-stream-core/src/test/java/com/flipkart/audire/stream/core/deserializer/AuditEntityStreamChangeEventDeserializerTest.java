@@ -8,7 +8,6 @@ import com.fasterxml.jackson.databind.node.TextNode;
 import com.flipkart.audire.stream.core.config.AuditEntityStreamConfiguration;
 import com.flipkart.audire.stream.core.config.AuditEntityStreamConfigurationFactory;
 import com.flipkart.audire.stream.model.AuditStreamEntityChangeEvent;
-import com.flipkart.audire.stream.model.EntityType;
 import com.flipkart.audire.stream.model.EventType;
 import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,7 +20,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Collections;
 import java.util.Map;
 
-import static com.flipkart.audire.stream.model.EntityType.BANNER_GROUP_AUDIT;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -45,7 +43,7 @@ class AuditEntityStreamChangeEventDeserializerTest {
 
     @BeforeEach
     void setUp() {
-        when(mockFactory.get(EntityType.AD_PRODUCT_AUDIT).getFieldConfig()).thenReturn(fieldConfig);
+        when(mockFactory.get("A").getFieldConfig()).thenReturn(fieldConfig);
         this.deserializer = spy(new AuditEntityStreamChangeEventDeserializerImpl(mockFactory));
     }
 
@@ -75,13 +73,13 @@ class AuditEntityStreamChangeEventDeserializerTest {
         when(fieldConfig.getOwnerField()).thenReturn("Owner");
         when(fieldConfig.getActorField()).thenReturn("Actor");
         when(fieldConfig.getEventTraceField()).thenReturn("EventTrace");
-        when(fieldConfig.getEntityType()).thenReturn(BANNER_GROUP_AUDIT);
+        when(fieldConfig.getEntityType()).thenReturn("A");
 
         AuditStreamEntityChangeEvent event = deserializer.deserialize(payload.getBytes());
         assertAll(
                 () -> assertEquals("AID", event.getId()),
                 () -> assertEquals(EventType.CREATE, event.getEventType()),
-                () -> assertEquals(BANNER_GROUP_AUDIT, event.getEntityType()),
+                () -> assertEquals("A", event.getEntityType()),
                 () -> assertEquals("Trace", event.getEventTraceId()),
                 () -> assertEquals("EID", event.getEntityId()),
                 () -> assertEquals("O1", event.getOwnerId()),
@@ -165,7 +163,7 @@ class AuditEntityStreamChangeEventDeserializerTest {
     private static class AuditEntityStreamChangeEventDeserializerImpl extends AuditEntityStreamChangeEventDeserializer {
 
         AuditEntityStreamChangeEventDeserializerImpl(AuditEntityStreamConfigurationFactory factory) {
-            super(EntityType.AD_PRODUCT_AUDIT, factory);
+            super("A", factory);
         }
     }
 }

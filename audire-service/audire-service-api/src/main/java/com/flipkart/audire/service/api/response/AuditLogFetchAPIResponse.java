@@ -1,7 +1,6 @@
 package com.flipkart.audire.service.api.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.flipkart.audire.stream.model.EntityType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -40,7 +39,7 @@ public class AuditLogFetchAPIResponse {
         private String entityId;
 
         @JsonProperty("entityType")
-        private EntityType entityType;
+        private String entityType;
 
         @JsonProperty("eventTraceId")
         private String eventTraceId;

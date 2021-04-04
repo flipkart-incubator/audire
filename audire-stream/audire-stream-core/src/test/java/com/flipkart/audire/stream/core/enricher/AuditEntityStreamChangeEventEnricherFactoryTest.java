@@ -1,6 +1,5 @@
 package com.flipkart.audire.stream.core.enricher;
 
-import com.flipkart.audire.stream.model.EntityType;
 import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,19 +21,19 @@ class AuditEntityStreamChangeEventEnricherFactoryTest {
 
     @BeforeEach
     void setUp() {
-        this.factory = new AuditEntityStreamChangeEventEnricherFactory(ImmutableMap.<EntityType, AuditEntityStreamChangeEventEnricher>builder()
-                .put(EntityType.BUSINESS_ACCOUNT_AUDIT, configuration)
+        this.factory = new AuditEntityStreamChangeEventEnricherFactory(ImmutableMap.<String, AuditEntityStreamChangeEventEnricher>builder()
+                .put("A", configuration)
                 .build());
     }
 
     @Test
     void testGetReturnsValidatorWhenKeyIsPresent() {
-        assertEquals(configuration, factory.get(EntityType.BUSINESS_ACCOUNT_AUDIT));
+        assertEquals(configuration, factory.get("A"));
     }
 
     @Test
     void testGetThrowsExceptionWhenWhenKeyIsNotPresent() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> factory.get(EntityType.PURCHASE_ORDER_AUDIT));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> factory.get("B"));
         assertTrue(exception.getMessage().contains("No Audit Entity Change Event Enricher available for entity"));
     }
 }

@@ -8,7 +8,6 @@ import com.flipkart.audire.stream.core.indexer.ElasticSearchChangelogIndexReques
 import com.flipkart.audire.stream.core.processor.AuditEntityStreamChangeEventProcessorFactory;
 import com.flipkart.audire.stream.model.AuditStreamEntityChangeEvent;
 import com.flipkart.audire.stream.model.ChangelogRecord;
-import com.flipkart.audire.stream.model.EntityType;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -79,9 +78,9 @@ public class AuditStreamTopology implements Managed {
         builder.stream(getTopics(), Consumed.with(Serdes.String(), auditSerde))
                 .filter((key, changeEvent) -> changeEvent != null)
                 .mapValues((key, changeEvent) -> {
-                    EntityType type = changeEvent.getEntityType();
-                    AuditStreamEntityChangeEvent enrichedChangeEvent = eventEnricherFactory.get(type).enrich(changeEvent);
-                    ChangelogRecord processedChangeEvent = eventProcessorFactory.get(type).process(enrichedChangeEvent);
+                    String entityType = changeEvent.getEntityType();
+                    AuditStreamEntityChangeEvent enrichedChangeEvent = eventEnricherFactory.get(entityType).enrich(changeEvent);
+                    ChangelogRecord processedChangeEvent = eventProcessorFactory.get(entityType).process(enrichedChangeEvent);
                     return indexRequestBuilder.buildRequest(processedChangeEvent);
                 })
                 .filter((key, request) -> request != null)

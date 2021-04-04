@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.node.BooleanNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 import com.flipkart.audire.service.api.response.AuditLogFetchAPIResponse;
 import com.flipkart.audire.service.core.BaseResourceHelper;
-import com.flipkart.audire.stream.model.EntityType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -50,7 +49,7 @@ class AuditAPIResponseBuilderTest {
 
     private void assertEntityAttributes(AuditLogFetchAPIResponse.Audit audit) {
         assertEquals("E", audit.getEntityId());
-        assertEquals(EntityType.CAMPAIGN_AUDIT, audit.getEntityType());
+        assertEquals("DUMMY_ENTITY_AUDIT", audit.getEntityType());
         assertEquals(12, audit.getVersion());
         assertEquals("I1", audit.getAuditId());
         assertEquals("P1", audit.getAuditPrevId());

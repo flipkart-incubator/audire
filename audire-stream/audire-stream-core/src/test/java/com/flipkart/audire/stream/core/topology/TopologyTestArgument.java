@@ -1,6 +1,5 @@
 package com.flipkart.audire.stream.core.topology;
 
-import com.flipkart.audire.stream.model.EntityType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,7 +15,7 @@ class TopologyTestArgument {
 
     private final String ingressTopic;
     private final String inputTopicEventFilePath;
-    private final EntityType entityType;
+    private final String entityType;
     private final String deserializerClass;
 
     public static class TopologyTestArgumentAggregator implements ArgumentsAggregator {
@@ -27,7 +26,7 @@ class TopologyTestArgument {
                 return builder()
                         .ingressTopic(arg.getString(0))
                         .inputTopicEventFilePath(arg.getString(1))
-                        .entityType((EntityType) (arg.get(2)))
+                        .entityType(arg.getString(2))
                         .deserializerClass(arg.getString(3))
                         .build();
 

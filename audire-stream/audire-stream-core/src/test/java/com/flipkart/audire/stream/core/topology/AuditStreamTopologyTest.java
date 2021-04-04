@@ -19,7 +19,6 @@ import com.flipkart.audire.stream.core.serdes.serializer.IndexRequestKeySerializ
 import com.flipkart.audire.stream.core.serdes.serializer.IndexRequestValueSerializer;
 import com.flipkart.audire.stream.core.serdes.serializer.ObjectToJsonBytesSerializer;
 import com.flipkart.audire.stream.model.ChangelogRecord;
-import com.flipkart.audire.stream.model.EntityType;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import io.dropwizard.testing.FixtureHelpers;
@@ -211,14 +210,14 @@ class AuditStreamTopologyTest {
     }
 
     private AuditEntityStreamChangeEventEnricherFactory getEventEnricherFactory(List<TopologyTestArgument> arguments) {
-        Map<EntityType, AuditEntityStreamChangeEventEnricher> entityEnricherMap = arguments.stream().collect(Collectors.toMap(
+        Map<String, AuditEntityStreamChangeEventEnricher> entityEnricherMap = arguments.stream().collect(Collectors.toMap(
                 TopologyTestArgument::getEntityType, arg -> eventEnricher));
 
         return new AuditEntityStreamChangeEventEnricherFactory(entityEnricherMap);
     }
 
     private AuditEntityStreamChangeEventProcessorFactory getEventProcessorFactory(List<TopologyTestArgument> arguments) {
-        Map<EntityType, AuditEntityStreamChangeEventProcessor> entityEnricherMap = arguments.stream().collect(Collectors.toMap(
+        Map<String, AuditEntityStreamChangeEventProcessor> entityEnricherMap = arguments.stream().collect(Collectors.toMap(
                 TopologyTestArgument::getEntityType, arg -> eventProcessor));
 
         return new AuditEntityStreamChangeEventProcessorFactory(entityEnricherMap);
@@ -227,7 +226,7 @@ class AuditStreamTopologyTest {
     private AudireStreamAppConfiguration getAppConfig(List<TopologyTestArgument> arguments) {
         AudireStreamAppConfiguration appConfig = TopologyTestArgumentSource.readAuditStreamAppYaml();
 
-        Map<EntityType, AuditEntityStreamConfiguration> entityStreamConfigMap = arguments.stream()
+        Map<String, AuditEntityStreamConfiguration> entityStreamConfigMap = arguments.stream()
                 .collect(Collectors.toMap(TopologyTestArgument::getEntityType,
                         arg -> appConfig.getAuditStreamEntityConfig().get(arg.getEntityType())));
 
@@ -243,7 +242,7 @@ class AuditStreamTopologyTest {
                 .build();
     }
 
-    private ChangelogRecord stubChangelogRecord(EntityType entityType) {
+    private ChangelogRecord stubChangelogRecord(String entityType) {
         return ChangelogRecord.builder()
                 .entityType(entityType)
                 .entityId("C1").version(12L)

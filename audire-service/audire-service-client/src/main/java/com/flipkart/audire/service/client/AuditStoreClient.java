@@ -73,7 +73,7 @@ public class AuditStoreClient {
      */
     private BoolQueryBuilder buildEntityFilter(AuditLogFetchAPIRequest request) {
         BoolQueryBuilder boolQuery = QueryBuilders.boolQuery()
-                .filter(QueryBuilders.termQuery(KEY_ENTITY_TYPE, request.getEntityType().name()));
+                .filter(QueryBuilders.termQuery(KEY_ENTITY_TYPE, request.getEntityType()));
 
         if (CollectionUtils.isNotEmpty(request.getEntityId())) {
             boolQuery.filter(QueryBuilders.termsQuery(KEY_ENTITY_ID, request.getEntityId()));

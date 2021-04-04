@@ -7,7 +7,7 @@
       "first": false,
       "systemic": false,
       "entityId": "E1",
-      "entityType": "BANNER_GROUP_AUDIT",
+      "entityType": "DUMMY_AUDIT",
       "eventTraceId": "ET",
       "auditId": "I1",
       "auditPrevId": "IP1",

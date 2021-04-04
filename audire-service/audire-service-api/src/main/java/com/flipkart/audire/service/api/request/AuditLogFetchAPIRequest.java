@@ -1,7 +1,6 @@
 package com.flipkart.audire.service.api.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.flipkart.audire.stream.model.EntityType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -22,7 +21,7 @@ public class AuditLogFetchAPIRequest {
 
     @NotNull
     @JsonProperty("entityType")
-    private EntityType entityType;
+    private String entityType;
 
     @JsonProperty("ownerId")
     private Set<String> ownerId;

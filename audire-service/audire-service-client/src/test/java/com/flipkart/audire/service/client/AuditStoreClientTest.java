@@ -5,7 +5,6 @@ import com.flipkart.audire.service.api.request.AuditLogFetchAPIRequest;
 import com.flipkart.audire.service.client.config.ESClientConfiguration;
 import com.flipkart.audire.service.model.Filter;
 import com.flipkart.audire.service.model.Pagination;
-import com.flipkart.audire.stream.model.EntityType;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.inject.Provider;
@@ -74,7 +73,7 @@ class AuditStoreClientTest {
 
     private AuditLogFetchAPIRequest stubFetchAPIRequest() {
         return AuditLogFetchAPIRequest.builder()
-                .entityId(Sets.newHashSet("E1", "E2")).entityType(EntityType.USER_ROLE_AUDIT)
+                .entityId(Sets.newHashSet("E1", "E2")).entityType(AuditEntityType.USER_ROLE_AUDIT)
                 .actor(Collections.singleton("A1")).ownerId(Sets.newHashSet("O1", "O2"))
                 .changedFields(Lists.newArrayList(
                         new AuditLogFetchAPIRequest.Field("F1"),

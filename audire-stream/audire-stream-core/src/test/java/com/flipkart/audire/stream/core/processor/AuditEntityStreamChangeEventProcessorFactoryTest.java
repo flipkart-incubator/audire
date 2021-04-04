@@ -1,6 +1,5 @@
 package com.flipkart.audire.stream.core.processor;
 
-import com.flipkart.audire.stream.model.EntityType;
 import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,19 +21,19 @@ class AuditEntityStreamChangeEventProcessorFactoryTest {
 
     @BeforeEach
     void setUp() {
-        this.factory = new AuditEntityStreamChangeEventProcessorFactory(ImmutableMap.<EntityType, AuditEntityStreamChangeEventProcessor>builder()
-                .put(EntityType.USER_ROLE_AUDIT, configuration)
+        this.factory = new AuditEntityStreamChangeEventProcessorFactory(ImmutableMap.<String, AuditEntityStreamChangeEventProcessor>builder()
+                .put("A", configuration)
                 .build());
     }
 
     @Test
     void testGetReturnsValidatorWhenKeyIsPresent() {
-        assertEquals(configuration, factory.get(EntityType.USER_ROLE_AUDIT));
+        assertEquals(configuration, factory.get("A"));
     }
 
     @Test
     void testGetThrowsExceptionWhenWhenKeyIsNotPresent() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> factory.get(EntityType.AD_ACCOUNT_AUDIT));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> factory.get("B"));
         assertTrue(exception.getMessage().contains("No Audit Entity Change Event Processor available for entity"));
     }
 }

@@ -3,7 +3,6 @@ package com.flipkart.audire.service.app.resource;
 import com.flipkart.audire.service.api.request.AuditLogFetchAPIRequest;
 import com.flipkart.audire.service.api.response.AuditLogFetchAPIResponse;
 import com.flipkart.audire.service.core.manager.AudireServiceManager;
-import com.flipkart.audire.stream.model.EntityType;
 import com.google.common.collect.Sets;
 import io.dropwizard.testing.junit5.DropwizardExtensionsSupport;
 import io.dropwizard.testing.junit5.ResourceExtension;
@@ -46,7 +45,7 @@ class AudireServiceResourceTest {
 
     private AuditLogFetchAPIRequest stubFetchRequest() {
         return AuditLogFetchAPIRequest.builder()
-                .entityType(EntityType.CAMPAIGN_AUDIT)
+                .entityType("E")
                 .entityId(Sets.newHashSet("C1", "C2"))
                 .build();
     }

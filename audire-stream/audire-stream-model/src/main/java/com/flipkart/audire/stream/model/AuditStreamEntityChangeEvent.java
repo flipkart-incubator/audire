@@ -18,7 +18,7 @@ public class AuditStreamEntityChangeEvent {
     private String id;
     private String prevId;
     private String eventTraceId;
-    private EntityType entityType;
+    private String entityType;
     private String entityId;
     private JsonNode afterNode;
     private JsonNode beforeNode;

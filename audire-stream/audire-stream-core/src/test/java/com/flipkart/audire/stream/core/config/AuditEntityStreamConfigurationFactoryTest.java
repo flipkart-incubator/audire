@@ -1,6 +1,5 @@
 package com.flipkart.audire.stream.core.config;
 
-import com.flipkart.audire.stream.model.EntityType;
 import com.google.common.collect.ImmutableMap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,19 +21,19 @@ class AuditEntityStreamConfigurationFactoryTest {
 
     @BeforeEach
     void setUp() {
-        this.factory = new AuditEntityStreamConfigurationFactory(ImmutableMap.<EntityType, AuditEntityStreamConfiguration>builder()
-                .put(EntityType.CAMPAIGN_AUDIT, configuration)
+        this.factory = new AuditEntityStreamConfigurationFactory(ImmutableMap.<String, AuditEntityStreamConfiguration>builder()
+                .put("A", configuration)
                 .build());
     }
 
     @Test
     void testGetReturnsValidatorWhenKeyIsPresent() {
-        assertEquals(configuration, factory.get(EntityType.CAMPAIGN_AUDIT));
+        assertEquals(configuration, factory.get("A"));
     }
 
     @Test
     void testGetThrowsExceptionWhenWhenKeyIsNotPresent() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> factory.get(EntityType.AD_PRODUCT_AUDIT));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> factory.get("B"));
         assertTrue(exception.getMessage().contains("No Audit Entity Stream Configuration available for entity"));
     }
 }

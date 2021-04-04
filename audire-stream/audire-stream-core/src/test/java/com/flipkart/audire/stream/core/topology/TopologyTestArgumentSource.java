@@ -13,8 +13,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import java.io.IOException;
 import java.util.stream.Stream;
 
-import static com.flipkart.audire.stream.model.EntityType.CAMPAIGN_AUDIT;
-
 @UtilityClass
 class TopologyTestArgumentSource {
 
@@ -34,8 +32,8 @@ class TopologyTestArgumentSource {
         return Stream.of(
                 Arguments.of("env.database.dummy_entity_audit",
                         "input_events/dummy_entity_audit_event.json",
-                        CAMPAIGN_AUDIT,
-                        "com.flipkart.audire.stream.impl.serdes.deserializer.cm.CampaignChangeEventDeserializer")
+                        "Dummy Entity",
+                        "com.flipkart.audire.stream.core.topology.dummy.DummyEntityChangeEventDeserializer")
         );
     }
 }
