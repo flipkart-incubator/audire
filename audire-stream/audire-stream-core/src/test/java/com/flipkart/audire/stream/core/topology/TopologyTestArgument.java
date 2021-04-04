@@ -11,7 +11,7 @@ import org.junit.jupiter.params.aggregator.ArgumentsAggregator;
 @Getter
 @AllArgsConstructor
 @Builder
-class TopologyTestArgument {
+public class TopologyTestArgument {
 
     private final String ingressTopic;
     private final String inputTopicEventFilePath;

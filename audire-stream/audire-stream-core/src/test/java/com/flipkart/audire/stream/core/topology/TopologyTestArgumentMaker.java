@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
 @AggregateWith(TopologyTestArgument.TopologyTestArgumentAggregator.class)
-@interface TopologyTestArgumentMaker {
+public @interface TopologyTestArgumentMaker {
 
 }

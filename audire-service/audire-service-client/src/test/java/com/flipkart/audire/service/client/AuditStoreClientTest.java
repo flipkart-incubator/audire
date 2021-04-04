@@ -73,7 +73,7 @@ class AuditStoreClientTest {
 
     private AuditLogFetchAPIRequest stubFetchAPIRequest() {
         return AuditLogFetchAPIRequest.builder()
-                .entityId(Sets.newHashSet("E1", "E2")).entityType(AuditEntityType.USER_ROLE_AUDIT)
+                .entityId(Sets.newHashSet("E1", "E2")).entityType("DUMMY_ENTITY_AUDIT")
                 .actor(Collections.singleton("A1")).ownerId(Sets.newHashSet("O1", "O2"))
                 .changedFields(Lists.newArrayList(
                         new AuditLogFetchAPIRequest.Field("F1"),

@@ -12,6 +12,6 @@ public class DummyEntityChangeEventDeserializer extends AuditEntityStreamChangeE
 
     @Inject
     public DummyEntityChangeEventDeserializer(AuditEntityStreamConfigurationFactory factory) {
-        super("Dummy Entity", factory);
+        super("DUMMY_ENTITY_AUDIT", factory);
     }
 }

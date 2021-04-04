@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.stream.Stream;
 
 @UtilityClass
-class TopologyTestArgumentSource {
+public class TopologyTestArgumentSource {
 
     AudireStreamAppConfiguration readAuditStreamAppYaml() {
         try {
@@ -32,7 +32,7 @@ class TopologyTestArgumentSource {
         return Stream.of(
                 Arguments.of("env.database.dummy_entity_audit",
                         "input_events/dummy_entity_audit_event.json",
-                        "Dummy Entity",
+                        "DUMMY_ENTITY_AUDIT",
                         "com.flipkart.audire.stream.core.topology.dummy.DummyEntityChangeEventDeserializer")
         );
     }

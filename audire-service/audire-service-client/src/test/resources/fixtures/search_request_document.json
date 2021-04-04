@@ -8,7 +8,7 @@
         {
           "term": {
             "entityType": {
-              "value": "USER_ROLE_AUDIT",
+              "value": "DUMMY_ENTITY_AUDIT",
               "boost": 1.0
             }
           }
