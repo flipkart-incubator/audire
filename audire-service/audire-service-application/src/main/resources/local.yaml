@@ -34,7 +34,7 @@ logging:
 
 esClientConfig:
   host: localhost
-  port: 9202
+  port: 9200
   scheme: http
   index: audit_trail_local
   type: all
