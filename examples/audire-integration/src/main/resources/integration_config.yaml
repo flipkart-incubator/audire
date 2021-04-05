@@ -1,0 +1,81 @@
+server:
+  applicationConnectors:
+    - type: http
+      port: 8130
+
+  adminConnectors:
+    - type: http
+      port: 8131
+
+audireAppConfig:
+  auditStoreSinkConfig:
+    documentKey: documentId
+
+  kafkaStreamConfig:
+    egressTopic: processed_audit_trail_local
+    applicationId: audit-cdc-enricher
+    bootstrapServers: 127.0.0.1:9092
+    cacheMaxBytesBuffering: 10240
+    commitIntervalConfig: 10s
+    metadataMaxAgeConfig: 1m
+    autoOffsetResetConfig: earliest
+
+  auditStreamEntityConfig:
+    DUMMY_ENTITY_AUDIT:
+      ingressTopic: env.database.dummy_entity_audit
+      systemicActors:
+        - system
+        - nightly
+
+      fieldConfig:
+        entityType: DUMMY_ENTITY_AUDIT
+        auditIdField: id
+        payloadField: log
+        entityIdField: entity_id
+        timestampField: created_at
+        actorField: user
+        ownerField: ownerId
+        eventTraceField: trace_id
+
+        extrasFields:
+          - id: name
+            displayName: Name
+
+          - id: rating
+            displayName: Entity Rating
+
+          - id: status
+            displayName: Status
+
+          - id: createdBy
+            displayName: Created By
+
+        nestedFields:
+          - meta
+
+        whitelistedFields:
+          - id: name
+            displayName: Name
+
+          - id: budget
+            displayName: Allocated Budget
+            type: NUMERIC
+            systemic: true
+
+          - id: status
+            displayName: Status
+
+          - id: endDate
+            displayName: End Date
+            type: EPOCH_MILLIS
+
+          - id: meta.year
+            displayName: Year
+            type: NUMERIC
+
+          - id: meta.roles
+            displayName: Roles
+            list: true
+
+        immutableFields:
+          - meta.roles

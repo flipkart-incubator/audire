@@ -7,5 +7,5 @@ import lombok.Getter;
 @Getter
 public class AudireIntegrationAppConfiguration extends Configuration {
 
-    private AudireStreamAppConfiguration streamAppConfig;
+    private AudireStreamAppConfiguration audireAppConfig;
 }

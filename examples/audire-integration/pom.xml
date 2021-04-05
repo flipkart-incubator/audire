@@ -18,6 +18,7 @@
 
         <!--Application-->
         <dropwizard.version>2.0.12</dropwizard.version>
+        <audire.stream.core.version>1.0-SNAPSHOT</audire.stream.core.version>
         <apache.commons.collection.version>4.2</apache.commons.collection.version>
         <lombok.version>1.18.8</lombok.version>
         <apache.commons.lang.version>3.7</apache.commons.lang.version>
@@ -43,6 +44,12 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>com.flipkart.audire</groupId>
+            <artifactId>audire-stream-core</artifactId>
+            <version>${audire.stream.core.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -96,12 +103,6 @@
                     <artifactId>junit</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>com.flipkart.audire</groupId>
-            <artifactId>audire-stream-core</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
